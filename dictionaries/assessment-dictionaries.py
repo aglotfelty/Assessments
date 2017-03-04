@@ -29,10 +29,11 @@ def count_words(phrase):
         {'Porcupine': 1, 'do.': 1, 'porcupine': 1, 'see,': 1}
     """
 
-    words = phrase.split()
-    word_counts = {}
+    words = phrase.split() # Create list of words in phrase split on spaces
+    word_counts = {} 
 
     for word in words:
+        # Add new word or add one if word already exists in word_counts dictionary
         word_counts[word] = word_counts.get(word, 0) + 1
 
     return word_counts
@@ -59,9 +60,26 @@ def get_melon_price(melon_name):
         >>> get_melon_price('Tomato')
         'No price found'
     """
+    melons = {'Watermelon': 2.95, 
+              'Cantaloupe': 2.50, 
+              'Musk': 3.25, 
+              'Christmas': 14.25,
+              }
 
-    return 0
+    return melons.get(melon_name, 'No price found')
 
+    # ALTERNATIVE SOLUTION:
+
+    # melons = {'Watermelon': 2.95, 
+    #           'Cantaloupe': 2.50, 
+    #           'Musk': 3.25, 
+    #           'Christmas': 14.25,
+    #           }
+
+    # if melon_name in melons:
+    #     return melons[melon_name]
+    # else:
+    #     return 'No price found'
 
 def word_length_sorted(words):
     """Return list of word-lengths and words.

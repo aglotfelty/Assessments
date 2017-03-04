@@ -230,7 +230,70 @@ def kids_game(names):
     good solutions here will definitely require a dictionary.
     """
 
-    return []
+    names_used = {}
+
+    # for index, name in enumerate(names):
+    #     names_used[name] = [index, 'unused']
+
+    first_word = names[0]
+    new_first_letter = first_word[-1]
+    results = [first_word]
+    names_used[first_word] = 'used'
+
+    while True:
+        if name in names_used and name.startswith(new_first_letter):
+            
+
+
+    while True:
+        for name in names:
+            if name.startswith(new_first_letter):
+                if name in names_used:
+                    continue
+                else:
+                    results.append(name)
+                    new_first_letter = name[-1]
+                    names_used[name] = 'used'
+                    break
+
+
+
+
+
+
+
+    print names_used
+
+
+    
+
+    # while True:
+    #     for name in names:
+    #         if name.startswith(new_first_letter) and name not in names_used:
+    #             results.append(name)
+    #             names_used[name] = 'used'
+    #             new_first_letter = name[-1]
+    #             continue
+    #     break
+
+
+
+
+    # while True:
+    #     for name in names:
+    #         if name.startswith(new_first_letter) and name not in names_used:
+    #             next_word = name        
+    #             results.append(next_word)
+    #             names_used[next_word] = 'used'
+    #             new_first_letter = next_word[-1]
+    #             continue
+
+
+
+
+
+
+    return results
 
 #####################################################################
 # You can ignore everything below this.

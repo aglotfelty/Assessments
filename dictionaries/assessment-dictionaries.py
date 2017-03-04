@@ -100,7 +100,21 @@ def word_length_sorted(words):
         [(2, ['ok']), (9, ['porcupine'])]
     """
 
-    return []
+    word_lengths = {}
+
+    for word in words:
+        word_length = len(word)
+        word_lengths[word_length] = word_lengths.get(word_length, []) + [word]
+    
+    word_length_sorted = []
+
+    for key, value in word_lengths.items():
+        value.sort()
+        word_length_sorted.append((key, value))
+
+    word_length_sorted.sort()
+
+    return word_length_sorted
 
 
 def translate_to_pirate_talk(phrase):
@@ -142,7 +156,32 @@ def translate_to_pirate_talk(phrase):
         'me swabbie be not a man!'
     """
 
-    return ""
+    english_pirate_translator = {'sir': 'matey',
+                                 'hotel': 'fleabag inn',
+                                 'student': 'swabbie',
+                                 'man': 'matey',
+                                 'professor': 'foul blaggart',
+                                 'restaurant': 'galley',
+                                 'your': 'yer',
+                                 'excuse': 'arr',
+                                 'students': 'swabbies',
+                                 'are': 'be',
+                                 'restroom': 'head',
+                                 'my': 'me',
+                                 'is': 'be',
+                                 }
+
+    words = phrase.split() # Create a list of words in the original phrase
+    new_phrase_words = [] # Create an empty list to hold the translated words
+
+    # Add translated (or original) words to the new_phrase_words list
+    for word in words:
+        new_phrase_words.append(english_pirate_translator.get(word, word))
+
+    # Join the list of words into the translated string
+    new_phrase = " ".join(new_phrase_words)
+
+    return new_phrase
 
 
 def kids_game(names):

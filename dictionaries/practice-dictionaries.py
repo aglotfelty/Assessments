@@ -62,7 +62,9 @@ def find_unique_common_items(items1, items2):
         [2]
     """
 
-    return []
+    intersection = list(set(items1) & set(items2))
+
+    return intersection
 
 def get_sum_zero_pairs(numbers):
     """Given list of numbers, return list of pairs summing to 0.

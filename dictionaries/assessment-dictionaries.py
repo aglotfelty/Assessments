@@ -29,7 +29,13 @@ def count_words(phrase):
         {'Porcupine': 1, 'do.': 1, 'porcupine': 1, 'see,': 1}
     """
 
-    return {}
+    words = phrase.split()
+    word_counts = {}
+
+    for word in words:
+        word_counts[word] = word_counts.get(word, 0) + 1
+
+    return word_counts
 
 
 def get_melon_price(melon_name):

@@ -129,8 +129,25 @@ def top_chars(phrase):
     Do not count spaces, but count all other characters.
 
     """
+    character_count = {}
 
-    return []
+    for letter in phrase:
+        if letter.isalpha():
+            character_count[letter] = character_count.get(letter, 0) + 1
+
+    top_letters = []
+
+    counts = character_count.values()
+    counts.sort()
+    top_count = counts[-1]
+
+    for letter in character_count.keys():
+        if character_count[letter] == top_count:
+            top_letters.append(letter)
+
+    top_letters.sort()
+
+    return top_letters
 
 #####################################################################
 # You can ignore everything below this.

@@ -132,4 +132,14 @@ def example():
     take_test(exam, student)
 
 
+# Part 5:
 
+class Quiz(Exam):
+    """A subclass of exam that assesses quizzes as pass/fail."""
+
+    def administer(self):
+        percentage_score = super(Quiz, self).administer()
+        if percentage_score > .5:
+            return True
+        else:
+            return False

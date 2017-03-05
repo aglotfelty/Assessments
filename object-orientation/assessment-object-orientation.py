@@ -108,4 +108,28 @@ class Exam(object):
         return final_score
 
 
+# Part 4:
+
+def take_test(Exam, Student):
+    """Administers the exam and assigns a score to the student."""
+
+    score = Exam.administer()
+    Student.score = score
+    print "{} {}'s score is {:.2f}.".format(Student.first_name, 
+                                            Student.last_name, 
+                                            Student.score)
+
+
+def example():
+    """Creates an exam, adds questions to the exam, creates a student, 
+        administers the exam for that student.
+    """
+    exam = Exam('midterm')
+    exam.add_question('What color is the sky?','blue')
+    exam.add_question('What color is grass?', 'green')
+    exam.add_question('Who is the author of Python?','Guido Van Rossum')
+    student = Student('Clara', 'Jordan', '123 Main Street')
+    take_test(exam, student)
+
+
 

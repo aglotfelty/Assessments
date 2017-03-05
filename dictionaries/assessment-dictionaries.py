@@ -29,11 +29,12 @@ def count_words(phrase):
         {'Porcupine': 1, 'do.': 1, 'porcupine': 1, 'see,': 1}
     """
 
-    words = phrase.split() # Create list of words in phrase split on spaces
-    word_counts = {} 
+    words = phrase.split()  # Create list of words in phrase split on spaces
+    word_counts = {}
 
+    # Populate word_counts dictionary with new words with value 1 or 
+    # add 1 to value if word already exists in word_counts
     for word in words:
-        # Add new word or add one if word already exists in word_counts dictionary
         word_counts[word] = word_counts.get(word, 0) + 1
 
     return word_counts
@@ -60,9 +61,9 @@ def get_melon_price(melon_name):
         >>> get_melon_price('Tomato')
         'No price found'
     """
-    melons = {'Watermelon': 2.95, 
-              'Cantaloupe': 2.50, 
-              'Musk': 3.25, 
+    melons = {'Watermelon': 2.95,
+              'Cantaloupe': 2.50,
+              'Musk': 3.25,
               'Christmas': 14.25,
               }
 
@@ -70,9 +71,21 @@ def get_melon_price(melon_name):
 
     # ALTERNATIVE SOLUTION:
 
-    # melons = {'Watermelon': 2.95, 
-    #           'Cantaloupe': 2.50, 
-    #           'Musk': 3.25, 
+    # melons = {'Watermelon': 2.95,
+    #           'Cantaloupe': 2.50,
+    #           'Musk': 3.25,
+    #           'Christmas': 14.25,
+    #           }
+
+    # price = melons.get(melon_name, 'No price found')
+    # return price
+
+
+    # OTHER ALTERNATIVE:
+
+    # melons = {'Watermelon': 2.95,
+    #           'Cantaloupe': 2.50,
+    #           'Musk': 3.25,
     #           'Christmas': 14.25,
     #           }
 
@@ -102,19 +115,20 @@ def word_length_sorted(words):
 
     word_lengths = {}
 
+    # Populate word_lengths dictionary with word_length as keys and 
+    # words of that length as a value list
     for word in words:
         word_length = len(word)
         word_lengths[word_length] = word_lengths.get(word_length, []) + [word]
     
-    word_length_sorted = []
+    sorted_words_by_length = []
 
-    for key, value in word_lengths.items():
-        value.sort()
-        word_length_sorted.append((key, value))
+    # Add new tuple to sorted_words_by_length with word length and sorted list of words
+    for word_length, words in word_lengths.items():
+        sorted_words_by_length.append((word_length, sorted(words)))
 
-    word_length_sorted.sort()
-
-    return word_length_sorted
+    # Return sorted_words_by_length list sorted by word length
+    return sorted(sorted_words_by_length)
 
 
 def translate_to_pirate_talk(phrase):
@@ -171,8 +185,8 @@ def translate_to_pirate_talk(phrase):
                                  'is': 'be',
                                  }
 
-    words = phrase.split() # Create a list of words in the original phrase
-    new_phrase_words = [] # Create an empty list to hold the translated words
+    words = phrase.split()  # Create a list of words in the original phrase
+    new_phrase_words = []  # Create an empty list to hold the translated words
 
     # Add translated (or original) words to the new_phrase_words list
     for word in words:
@@ -230,7 +244,7 @@ def kids_game(names):
     good solutions here will definitely require a dictionary.
     """
 
-    # Keys = last letters, Values = list of words that start with that letter
+    # Keys = last letters, Values = list of names that start with that letter
     last_letters = {}
 
     # Populate last_letters with last letter keys and empty lists as values
@@ -238,23 +252,23 @@ def kids_game(names):
         last_letter = name[-1]
         last_letters[last_letter] = []
 
-    # Add words that start with the letters to the value lists, 
-    # not including first word
+    # Add names that start with the last_letters to the value lists,
+    # not including first word in names
     for name in names[1:]:
         first_letter = name[0]
         if first_letter in last_letters:
             last_letters[first_letter] += [name]
 
-    # Setting up using first word in names list
+    # Set up results and loop using first word in names list
     first_word = names[0]
     last_letter = first_word[-1]
     results = [first_word]
 
-    # Run loop until you hit a value list without any words in it
+    # Run loop until you hit a value list without any names in it
     while len(last_letters[last_letter]):
         # Capture and remove first item in value list as name
-        name = last_letters[last_letter].pop(0) 
-        results.append(name) 
+        name = last_letters[last_letter].pop(0)
+        results.append(name)
         last_letter = name[-1]
 
     return results

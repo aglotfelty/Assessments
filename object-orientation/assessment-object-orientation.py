@@ -14,24 +14,26 @@ Part 1: Discussion
         jack. Subclasses can all be different, but they can do the same kind of
         things with the same methods.
 
-2. What is a class? A class is a type of data collection that can store its own
+2. What is a class?
+        A class is a type of data collection that can store its own
         data and methods. It is structured and customizable. When you create a
-        class, you define all of the general behaviors that a category of
+        class, you define all of the general behaviors that that category of
         objects can have.
 
-3. What is an instance attribute? An instance attribute is a piece of data that
-        is unique to an instance, or individual occurance, of a class. For
-        example, in a hypothetical class called Animal, there might be an
-        instance of the Animal class that has the name "Fido". Not all animals
-        are named "Fido", so this name is an instance attribute to that
-        particular instance of the Animal class.
+3. What is an instance attribute?
+        An instance attribute is a piece of data that is unique to an instance,
+        or individual occurance, of a class. For example, in a hypothetical
+        class called Animal, there might be an instance of the Animal class
+        that has the name "Fido". Not all animals are named "Fido", so this name
+        is an instance attribute to that particular instance of the Animal class.
 
-4. What is a method? A method is a function defined within a class.
+4. What is a method?
+        A method is a function defined within a class.
 
-5. What is an instance in object orientation? An instance is an individual
-        occurance of a class. An instance has all the attributes and methods
-        definined within the class. It can also have instance attributes defined
-        once the instance is created.
+5. What is an instance in object orientation?
+        An instance is an individual occurance of a class. An instance has all
+        the attributes and methods definined within the class. It can also have
+        instance attributes defined once the instance is created.
 
 6. How is a class attribute different than an instance attribute?
    Give an example of when you might use each.
@@ -54,48 +56,45 @@ class Student(object):
     """A class of students and their information."""
 
     def __init__(self, first_name, last_name, address):
-        """Create the basic information needed for a student class"""
-        
+        """Create the basic information needed for an instance of Student."""
+       
         self.first_name = first_name
         self.last_name = last_name
         self.address = address
 
 
 class Question(object):
-    """A class of questions and answers."""
+    """A class of questions and correct_answers."""
 
-    def __init__(self, question, answer):
-        """Create a new question and answer for a question class"""
-        
+    def __init__(self, question, correct_answer):
+        """Create a question and correct_answer for an instance of Question."""
+      
         self.question = question
-        self.answer = answer
+        self.correct_answer = correct_answer
 
 
     def ask_and_evaluate(self):
-        """Prints the question and prompts the user for an answer. 
-            Returns True of False depending on correct answer. 
+        """Prints the question to console and prompts the user for an answer.
+            Returns True if answer is the correct_answer, or False if not.
         """
-
         answer = raw_input(self.question + " > ")
-        if answer == self.answer:
-            return True
-        else:
-            return False
+        return answer == str(self.correct_answer)  # Account for non-string self.correct_answer 
 
 
 class Exam(object):
     """A class of exams and questions."""
 
     def __init__(self, name):
-        """Create a new exam class"""
+        """Create a new exam class."""
 
         self.name = name
         self.questions = []
 
-    def add_question(self, question, answer):
-        """Adds a question and answer to the Exam's list of questions."""
 
-        self.questions.append(Question(question, answer))
+    def add_question(self, question, correct_answer):
+        """Adds a question and correct_answer to the Exam's list of questions."""
+
+        self.questions.append(Question(question, correct_answer))
 
 
     def administer(self):
@@ -117,31 +116,41 @@ def take_test(Exam, Student):
 
     score = Exam.administer()
     Student.score = score
-    print "{} {}'s score is {:.2f}.".format(Student.first_name, 
-                                            Student.last_name, 
+    print "{} {}'s score is {:.2f}.".format(Student.first_name,
+                                            Student.last_name,
                                             Student.score)
 
 
 def example():
-    """Creates an exam, adds questions to the exam, creates a student, 
+    """Creates an exam, adds questions to the exam, creates a student,
         administers the exam for that student.
     """
     exam = Exam('midterm')
-    exam.add_question('What color is the sky?','blue')
-    exam.add_question('What color is grass?', 'green')
-    exam.add_question('Who is the author of Python?','Guido Van Rossum')
-    student = Student('Clara', 'Jordan', '123 Main Street')
+    exam.add_question('What color is the sky on a sunny day?', 'blue')
+    exam.add_question('What color is healthy grass?', 'green')
+    exam.add_question('Who is the author of Python?', 'Guido Van Rossum')
+    student = Student('Example', 'Student', '123 Main Street')
     take_test(exam, student)
+
+    # ALTERNATE SOLUTION INCASE USER WAS SUPPOSED TO CREATE EXAM & STUDENT:
+
+    # exam = Exam(raw_input("What is your example exam called? > "))
+    # exam.add_question('What color is the sky on a sunny day?', 'blue')
+    # exam.add_question('What color is healthy grass?', 'green')
+    # exam.add_question('Who is the author of Python?','Guido Van Rossum')
+    # student = Student(raw_input("What is your example student's first name? > "),
+    #                   raw_input("What is your example student's last name? > "),
+    #                   raw_input("What is your example student's address? > "))
+    # take_test(exam, student)
 
 
 # Part 5:
- 
+
 class Quiz(Exam):
     """A subclass of exam that assesses quizzes as pass/fail."""
 
     def administer(self):
+        """Administers the Quiz and returns True if passed or False if failed."""
+
         percentage_score = super(Quiz, self).administer()
-        if percentage_score > .5:
-            return True
-        else:
-            return False
+        return percentage_score >= 0.5

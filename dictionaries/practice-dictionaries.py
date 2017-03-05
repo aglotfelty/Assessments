@@ -34,6 +34,24 @@ def without_duplicates(words):
 
     return list(set(words))
 
+    # ALTERNATE SOLUTION WITH DICTIONARIES:
+
+    # word_count = {}
+    # for word in words:
+    #     word_count[word] = word_count.get(word, 0) + 1
+
+    # return word_count.keys()
+
+
+    # ANOTHER ALTERNATE SOLUTION WITH DICTIONARIES:
+
+    # unique_words = {}
+    # for word in words:
+    #     unique_words[word] = 'unique'
+
+    # return unique_words.keys()
+
+
 
 def find_unique_common_items(items1, items2):
     """Produce the set of *unique* common items in two lists.
@@ -66,6 +84,7 @@ def find_unique_common_items(items1, items2):
 
     return intersection
 
+
 def get_sum_zero_pairs(numbers):
     """Given list of numbers, return list of pairs summing to 0.
 
@@ -92,17 +111,45 @@ def get_sum_zero_pairs(numbers):
         >>> sort_pairs( get_sum_zero_pairs([1, 3, -1, 1, 1, 0]) )
         [[-1, 1], [0, 0]]
     """
-    zero_pairs = set()
+
+    zero_pairs = {}
 
     for num in numbers:
         for i in range(len(numbers)):
             if num + numbers[i] == 0:
-                pair = [num, numbers[i]]
-                pair.sort()
-                pair = tuple(pair)
-                zero_pairs.add(pair)
+                pair = tuple(sorted([num, numbers[i]]))
+                zero_pairs[pair] = 0
 
-    return list(zero_pairs)
+    return zero_pairs.keys()
+
+    # ALTERNATE SOLUTION WITH SETS:
+
+    # zero_pairs = set()
+
+    # for num in numbers:
+    #     for i in range(len(numbers)):
+    #         if num + numbers[i] == 0:
+    #             pair = tuple(sorted([num, numbers[i]]))
+    #             zero_pairs.add(pair)
+
+
+    # return list(zero_pairs)
+
+    #ANOTHER ALTERNATE VERSION WITH SETS
+
+    # zero_pairs = set()
+
+    # for num in numbers:
+    #     for i in range(len(numbers)):
+    #         if num + numbers[i] == 0:
+    #             pair = [num, numbers[i]]
+    #             pair.sort()
+    #             pair = tuple(pair)
+    #             zero_pairs.add(pair)
+
+    # return list(zero_pairs)
+
+
 
 
 def top_chars(phrase):
@@ -135,19 +182,34 @@ def top_chars(phrase):
         if letter.isalpha():
             character_count[letter] = character_count.get(letter, 0) + 1
 
-    top_letters = []
+    count_characters = {}
 
-    counts = character_count.values()
-    counts.sort()
-    top_count = counts[-1]
+    for letter, count in character_count.items():
+        count_characters[count] = count_characters.get(count, []) + [letter]
 
-    for letter in character_count.keys():
-        if character_count[letter] == top_count:
-            top_letters.append(letter)
+    top_count = sorted(count_characters.keys())[-1]
 
-    top_letters.sort()
+    return count_characters[top_count]
 
-    return top_letters
+
+    # ALTERNATIVE SOLUTION:
+
+    # character_count = {}
+
+    # for letter in phrase:
+    #     if letter.isalpha():
+    #         character_count[letter] = character_count.get(letter, 0) + 1
+
+    # top_letters = []
+
+    # counts = sorted(character_count.values())
+    # top_count = counts[-1]
+
+    # for letter in character_count.keys():
+    #     if character_count[letter] == top_count:
+    #         top_letters.append(letter)
+
+    # return sorted(top_letters)
 
 #####################################################################
 # You can ignore everything below this.

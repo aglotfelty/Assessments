@@ -230,70 +230,37 @@ def kids_game(names):
     good solutions here will definitely require a dictionary.
     """
 
-    names_used = {}
+    # Keys = last letters, Values = list of words that start with that letter
+    last_letters = {}
 
-    # for index, name in enumerate(names):
-    #     names_used[name] = [index, 'unused']
+    # Populate last_letters with last letter keys and empty lists as values
+    for name in names:
+        last_letter = name[-1]
+        last_letters[last_letter] = []
 
+    # Add words that start with the letters to the value lists, 
+    # not including first word
+    for name in names[1:]:
+        first_letter = name[0]
+        if first_letter in last_letters:
+            last_letters[first_letter] += [name]
+
+    # Setting up using first word in names list
     first_word = names[0]
-    new_first_letter = first_word[-1]
+    last_letter = first_word[-1]
     results = [first_word]
-    names_used[first_word] = 'used'
 
-    while True:
-        if name in names_used and name.startswith(new_first_letter):
-            
-
-
-    while True:
-        for name in names:
-            if name.startswith(new_first_letter):
-                if name in names_used:
-                    continue
-                else:
-                    results.append(name)
-                    new_first_letter = name[-1]
-                    names_used[name] = 'used'
-                    break
-
-
-
-
-
-
-
-    print names_used
-
-
-    
-
-    # while True:
-    #     for name in names:
-    #         if name.startswith(new_first_letter) and name not in names_used:
-    #             results.append(name)
-    #             names_used[name] = 'used'
-    #             new_first_letter = name[-1]
-    #             continue
-    #     break
-
-
-
-
-    # while True:
-    #     for name in names:
-    #         if name.startswith(new_first_letter) and name not in names_used:
-    #             next_word = name        
-    #             results.append(next_word)
-    #             names_used[next_word] = 'used'
-    #             new_first_letter = next_word[-1]
-    #             continue
-
-
-
-
-
+    # Run loop until you hit a value list without any words in it
+    while len(last_letters[last_letter]):
+        # Capture and remove first item in value list as name
+        name = last_letters[last_letter].pop(0) 
+        results.append(name) 
+        last_letter = name[-1]
 
     return results
+
+
+
 
 #####################################################################
 # You can ignore everything below this.

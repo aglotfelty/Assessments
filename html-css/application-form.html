@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <title>Application Form</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <h1>Ubermelon Application Form</h1>
+  <p>Thank you for your interest in Ubermelon! We are looking forward to learning
+    more about you. Please complete the simple form below as the first step in 
+    your application process. Someone from our staff team will be in touch shortly
+    with information on next steps.</p>
+  <form action="/application-success" method="POST">
+    <label for="firstname">First Name: </label>
+      <input type="text" name="firstname" value="first name"><br><br>
+    <label for="lastname">Last Name: </label>
+      <input type="text" name="lastname" value="last name" id="lastname"><br><br>
+    <fieldset> 
+      <legend>Which job are you applying for?</legend>
+      <input type="radio" name="job" value="softwareengineer" id="softwareengineer">Software Engineer <br>
+      <input type="radio" name="job" value="qaengineer" id="qaengineer">QA Engineer<br>
+      <input type="radio" name="job" value="productmanager" id="prodcutmanager">Product Manager<br>
+    </fieldset><br>
+    <input type="submit"> 
+  </form>
+</body>
+</html>

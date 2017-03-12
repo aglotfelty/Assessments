@@ -2,6 +2,8 @@
 {% block title %}Ubermelon Application Confirmation{% endblock %}
 {% block content %}
   <h2>Application Complete</h2>
-    <p>Thank you, {{ first_name }} {{ last_name }}, for applying to be a {{ job_title }}. Your minimum salary requirement is {{ "${:,.2f}".format(salary|float) }}.
-        We will be in touch with you soon regarding next steps.</p>
+    <p>Thank you, {{ first_name }} {{ last_name }}, for applying to be a 
+        {{ job_title }} at Ubermelon. Your minimum salary requirement is 
+        {{ "${:,.2f}".format(salary|float) }}. We will be in touch with you 
+        soon regarding next steps.</p>
 {% endblock %}

@@ -20,7 +20,7 @@ def index():
 def apply_here():
     """Application page"""
 
-    jobs=['Software Engineer', 'QA Engineer', 'Product Manager']
+    jobs = ['Software Engineer', 'QA Engineer', 'Product Manager']
     return render_template("application-form.html", job_options=jobs)
 
 
@@ -29,12 +29,15 @@ def finish_form():
     """Application response form"""
     first_name = request.form.get("firstname")
     last_name = request.form.get("lastname")
+    
+    # Format salary so that it is correct whether or not the user enters commas
     preformatted_salary = str(request.form.get("salary"))
     formatted_salary = ''
     for char in preformatted_salary:
         if char != ',':
             formatted_salary += char
     salary = formatted_salary
+    
     job_title = request.form.get("job")
 
     return render_template("application-response.html",

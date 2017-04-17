@@ -34,7 +34,11 @@ is a BaseQuery object."""
 """ANSWER: An association table is a table that's only purpose is to connect two 
 tables that have a many to many relationship. The association table simply includes 
 the primary keys for both tables so that they can talk to one another. It does
+<<<<<<< HEAD
 not provide any additional data (or meaningful fields) as a middle table would. An example of an 
+=======
+not provide any additional data (as a middle table would). An example of an 
+>>>>>>> 0e8e1ab1bd4e2977aad8629634105337d65920fc
 association table would be a table to connect books to their genres. Many books
 can have the same genre and one book can have many genres. Therefore, the relationship
 is many to many. The table includes the primary keys for both the books and the 

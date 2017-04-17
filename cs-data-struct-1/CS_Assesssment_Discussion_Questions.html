@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Allie's CS Discussion Questions</title>
+  </head>
+  <body>
+    <h3>Runtime</h3>
+    <ol>
+      <li>When calculating the Big O notation for a particular algorithm, it is necessary to consider the length of time it takes for the algorithm to run as the algorithm&#39;s workload approaches infinity. You can think of the workload as the number of tasks required to complete a job. What determines the workload of figuring out whether your box of animal crackers contains an elephant?</li>
+        <ul>
+          <li>Answer: Assuming you mean an elephant cracker, O(n), because in theory, you may have to check every single animal cracker in the box to determine whether or not there is an elephant cracker in there. If you meant an actual elephant, it would be O(1), because I'm pretty sure you could tell instantly whether or not there was a live elephant in the box (or it wouldn't be possible for the elephant to fit in the box at all).</li>
+        </ul>
+
+      <li>Order the following runtimes in descending order of efficiency (that is, fastest runtimes first, slowest last) as n approaches infinity:</li>
+        <ul>
+          <li>O(1)</li>
+          <li>O(log n)</li>
+          <li>O(n)</li>
+          <li>O(n log n)</li>
+          <li>O(n<sup>2</sup>)</li>
+          <li>O(2<sup>n</sup>)</li>
+        </ul>
+    </ol>
+
+  <h3>Stacks and Queues</h3>
+  <ol>
+    <li>In the following cases, would a stack or queue be a more appropriate data structure?</li>
+    <ul>
+      <li>The process of loading and unloading pallets onto a flatbed truck: <b>Stack</b></li>
+      <li>Putting bottle caps on bottles of beer as they roll down an assembly line: <b>Queue</b></li>
+      <li>Calculating the solution to this mathematical expression: 2 + (7 * 4) - (3 / 2): <b>Stack</b></li>
+    </ul>
+    <li>Describe two more situations where a queue would be an appropriate data structure.</li>
+      <ul>
+        <li>A cache, where you discard the oldest information when you are full and need handle new information</li>
+        <li>Checking out customers in line at the grocery store</li>
+        <li>Online merchant processing orders</li>
+        <li>Calls to customer service</li>
+        <li>Directions to a certain location</li>
+      </ul>
+    <li>Describe two more situations where a stack would be an appropriate data structure.</li>
+      <ul>
+        <li>Check if the parentheses in an equation are balanced</li>
+        <li>Click undo on your computer</li>
+        <li>Click the back button on a website</li>
+        <li>Eat a stack of pancakes one by one from top to bottom</li>
+      </ul>
+  </ol>
+
+    <h3>Linked Lists</h3>
+    <ol>
+      <li>Given the linked list below, which are the nodes? What is the data for each node? Where is the head? Where is the tail? (Please be as specific as possible &mdash; exactly which parts of the diagram correspond to each part? Arrows? Boxes? Text?)
+      </li>
+      <img src="http://fellowship.hackbrightacademy.com/materials/skills/cs-data-struct-1/_images/graphviz-5426bece002d4d6d90010d971dbc060cf7af82c0.svg">
+      <ul>
+        <li><b>Nodes:</b> Boxes with "Apple", "Berry", and "Cherry" inside them plus the <i>next</i> box plus an arrow, i.e. Apple&#39;s node includes the box with "Apple" in it, the box next to it with "<i>next</i>" inside and the arrow pointing to the "Berry" node.</li>
+        <li><b>Data for each node:</b> Text information inside the boxes: "Apple", "Berry", and "Cherry"</li>
+        <li><b>Head:</b> The head is defined using the box with <i>head</i> inside pointing to the node which is the head. In this case, the head node is the one with data="Apple" and next="Berry"</li>
+        <li><b>Tail:</b> There is no tail attribute in this example diagram.</li>
+      </ul>
+    </ol>
+
+    <h3>Trees</h3>
+
+    <img src="http://fellowship.hackbrightacademy.com/materials/skills/cs-data-struct-1/_images/graphviz-9646ff8da785f0701104a5444ccd6ec8cef0d2f2.svg">
+
+    <ol>
+      <li>Given the tree above, in what order would a Breadth First Search (BFS) algorithm visit each node until finding burritos (starting at food)? Just list the order of nodes visited; no need to recreate the state of the algorithm data in your answer.
+      </li>
+      <ul>
+        <li>food, Italian, Indian, Mexican, lasagna, pizza, tikka masala, saag, <b>burritos</b></li>
+      </ul>
+      <li>Given the tree above, in what order would a Depth First Search (DFS) algorithm visit each node until finding Chicago-style (starting at food)? Just list the order of nodes visited; no need to recreate the state of the algorithm data in your answer.
+      </li>
+        <ul>
+          <li>food, Mexican, enchiladas, tacos, burritos, Indian, saag, tikka masala, Italian, pizza, Sicilian, New York-style, <b>Chicago-style</b></li>
+        </ul>
+      <li>How is a binary search tree different from other trees?</li>
+      <ul>
+        <li>Parents in a binary search tree can have at most two children, and binary search trees are set up according to a rule.</li>
+      </ul>
+    </ol>
+  </body>
+</html>

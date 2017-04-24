@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>CS Data Structures 2</title>
+  </head>
+  <body>
+    <h1>Discussion Questions</h1>
+    <h2>Recursion</h2>
+    <ol>
+      <li>In your own words, what is recursion?</li>
+      <ul>
+        <li>Recursion is used when you call a function within itself. Recursion 
+          requires having a base case, or a part of the fuction that let's 
+          itself know when to return for the first time.
+        </li>
+      </ul>
+      <li>Why is it necessary to have a base case?</li>
+      <ul>
+        <li>It is necessary to have a base case so that the function knows when 
+          to return for the first time (when to stop calling the function within 
+          itself). If there is no base case, there will be a Runtime Error.
+        </li>
+      </ul>
+    </ol>
+    <h2>Graphs</h2>
+    <ol>
+      <li>What is a graph?</li>
+      <ul>
+        <li>A graph is often used to model the relationship between things. It 
+          contains nodes, which have adjacency lists (a list of every node it 
+          is connected to) and edges (that connect nodes),  A graph can contain 
+          loops ("cycles"), and relationships within the graph can be directed or 
+          undirected. Edges may also have an optional weight connected to them.
+        </li>
+      </ul>
+      <li>How is a graph different from a tree?</li>
+      <ul>
+        <li>All trees are graphs, but not all graphs are trees. Trees have 
+          hierarchy, graphs do not. Unlike a tree, a graph can contain loops 
+          ("cycles"), and relationships within the graph can be directed or 
+          undirected. Graphs can also be connected or not connected, but trees 
+          must be connected.
+        </li>
+      </ul>
+      <li>Give an example of something that would be good to model with a graph.</li>
+      <ul>
+        <li>An example of something that would be good to model with a graph is 
+          Facebook friends.</li>
+      </ul>
+    </ol>
+    <h2>Performance of Different Data Structures</h2>
+    <table border="1">
+      <thead valign="bottom">
+        <tr>
+          <th>Data Structure</th>
+          <th>Index</th>
+          <th>Search</th>
+          <th>Add-R</th>
+          <th>Add-L</th>
+          <th>Pop-L</th>
+          <th>Pop-R</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Python List (Array)</td>
+          <td>O(1)</td>
+          <td>O(n)</td>
+          <td>O(1)</td>
+          <td>O(n)</td>
+          <td>O(n)</td>
+          <td>O(1)</td>
+        </tr>
+        <tr>
+          <td>Linked List</td>
+          <td>O(n)</td>
+          <td>O(n)</td>
+          <td>O(n) (no tail)<br>O(1) (with tail)</td>
+          <td>O(1)</td>
+          <td>O(1)</td>
+          <td>O(n) (no tail)<br>O(1) (with tail)</td>
+        </tr>
+        <tr>
+          <td>Doubly Linked List</td>
+          <td>O(n)</td>
+          <td>O(n)</td>
+          <td>O(1)</td>
+          <td>O(1)</td>
+          <td>O(1)</td>
+          <td>O(1)</td>
+        </tr>
+        <tr>
+          <td>Queue (as Array)</td>
+          <td>X</td>
+          <td>X</td>
+          <td>O(1)</td>
+          <td>X</td>
+          <td>O(n)</td>
+          <td>X</td>
+        </tr>
+        <tr>
+          <td>Queue (as LL or DLL)</td>
+          <td>X</td>
+          <td>X</td>
+          <td>O(1)</td>
+          <td>X</td>
+          <td>O(1)</td>
+          <td>X</td>
+        </tr>
+        <tr>
+          <td>Stack (as Array, LL, or DLL)</td>
+          <td>X</td>
+          <td>X</td>
+          <td>O(1)</td>
+          <td>X</td>
+          <td>X</td>
+          <td>O(1)</td>
+        </tr>
+         <tr>
+          <td>Deque</td>
+          <td>X</td>
+          <td>X</td>
+          <td>O(1)</td>
+          <td>O(1)</td>
+          <td>O(1)</td>
+          <td>O(1)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table border="1">
+      <thead valign="bottom">
+        <tr>
+          <th>Data Structure</th>
+          <th>Get</th>
+          <th>Add</th>
+          <th>Delete</th>
+          <th>Iterate</th>
+          <th>Memory</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Dictionary (Hash Map)</td>
+          <td>O(1)</td>
+          <td>O(1)</td>
+          <td>O(1)</td>
+          <td>O(n)</td>
+          <td>medium</td>
+        </tr>
+        <tr>
+          <td>Set (Hash Map)</td>
+          <td>O(1)</td>
+          <td>O(1)</td>
+          <td>O(1)</td>
+          <td>O(n)</td>
+          <td>medium</td>
+        </tr>
+        <tr>
+          <td>Binary Search Tree</td>
+          <td>O(logn)</td>
+          <td>O(logn)</td>
+          <td>O(logn)</td>
+          <td>O(logn)</td>
+          <td>low</td>
+        </tr>
+        <tr>
+          <td>Tree</td>
+          <td>O(n)</td>
+          <td>O(1)</td>
+          <td>O(1)</td>
+          <td>O(n)</td>
+          <td>low</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>Sorting</h2>
+    <ol>
+      <li>Describe in words how the Bubble Sort algorithm works.</li>
+      <ul>
+        <li>The Bubble Sort algorithm takes in a list. It starts with the first two items in the list and compares them. If the first item is smaller than the second item, it stays where it is. If the first item is larger than the second item, they switch spots. Then, you repeat for the second and third items, and so on until you get to the end of the list. After this first iteration, the largest item will be the last item in the list. You start again at the beginning of the list and swap items until you reach the end of the list. Now the second largest item will be second to last in the list. You start back at the beginning again. This pattern will repeat until there are no more swaps to be made. 
+        </li>
+      </ul>
+      <li>Describe in words how the Merge Sort algorithm works.</li>
+      <ul>
+        <li>The Merge Sort algorithm starts by taking in a list and making each item in the list its own list of one item. Then, it takes all the individual lists (which are each properly sorted, because there is only one item in the list) and merges them one by one into one large sorted list. It takes two of the lists, compares the first items in each list, then pops off and adds the smaller one to the merged list. Then, it checks the first item in both lists again (if there is one), and adds the smaller one to the merged list. This continues until both lists are empty. Then, you have a sorted list. Then, it compares that sorted list with the next sorted list, comparing the first two elements and placing them in the merged list accordingly, smallest item first, and so on, until all the individual lists are back together in the sorted order in the merged list.
+        </li>
+      </ul>
+      <li>Describe in words how the Quick Sort algorithm works.</li>
+      <ul>
+        <li>The Quick Sort algorithm works by choosing a pivot point and then sorting the list based on that pivot. It creates three new lists, one that is values lower than the pivot, one that is items equal to the pivot, and one that is items larger than the pivot. Then, it quick sorts the lower and higher lists and concatenates them with the list of equals in the middle. This pattern repeats until all the lists are in order and concatenated.</li>
+      </ul>
+    </ol>
+
+
+  </body>
+</html>
